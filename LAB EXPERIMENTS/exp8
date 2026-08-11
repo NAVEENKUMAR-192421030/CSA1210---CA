@@ -1,0 +1,25 @@
+LXI B,0000H
+
+LHLD 8502H
+XCHG
+
+LHLD 8500H
+
+LOOP: MOV A,L
+      SUB E
+      MOV L,A
+      MOV A,H
+      SBB D
+      MOV H,A
+      JC END
+      INX B
+      JMP LOOP
+
+END:  DAD D
+      SHLD 8506H
+
+      MOV L,C
+      MOV H,B
+      SHLD 8504H
+
+      HLT
