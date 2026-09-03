@@ -1,0 +1,23 @@
+LDA 2050
+MOV B,A
+
+LDA 2051
+MOV C,A
+
+MOV A,B
+
+LOOP: STA 2052
+      MOV D,A
+
+CHECK: MOV A,D
+       SUB C
+       JC NEXT
+       JZ DONE
+       MOV D,A
+       JMP CHECK
+
+NEXT: LDA 2052
+      ADD B
+      JMP LOOP
+
+DONE: HLT

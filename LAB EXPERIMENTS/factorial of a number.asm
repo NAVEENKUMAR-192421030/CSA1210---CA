@@ -1,0 +1,21 @@
+LDA 2050
+MOV B,A
+
+MVI A,01
+
+LOOP: MOV C,B
+      CALL MULT
+      DCR B
+      JNZ LOOP
+
+STA 2051
+HLT
+
+MULT: MOV D,A
+      MVI A,00
+
+ADDLOOP: ADD D
+         DCR C
+         JNZ ADDLOOP
+
+      RET

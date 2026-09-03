@@ -1,0 +1,21 @@
+MVI C,05
+
+LOOP1: LXI H,2050
+       MVI B,04
+
+LOOP2: MOV A,M
+       INX H
+       CMP M
+       JNC SKIP
+       MOV D,M
+       MOV M,A
+       DCX H
+       MOV M,D
+       INX H
+
+SKIP: DCR B
+      JNZ LOOP2
+      DCR C
+      JNZ LOOP1
+
+HLT
